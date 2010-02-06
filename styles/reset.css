@@ -1,0 +1,11 @@
+/* Reset
+   Updated: Wed 02.06.10 @ 12:15 a.m.
+   Author:     Jim Jeffers
+   ----------------------------------------------------*/
+* {
+   border: 0;
+   margin: 0;
+   padding: 0;
+}
+
+@import "typography.css";

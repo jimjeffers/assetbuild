@@ -1,0 +1,10 @@
+/* Typography
+   Updated: Wed 02.06.10 @ 12:15 a.m.
+   Author:     Jim Jeffers
+   ----------------------------------------------------*/
+   
+   body {
+      font: 75% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+   }
+   
+   @import "special/basic_stuff.css";

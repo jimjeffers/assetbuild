@@ -1,0 +1,31 @@
+== Usage
+
+> require 'css_reader'
+> css = CSSReader.new("test.css")
+> css.append("secondary.css")
+> css.save("production.css", :compress => true)
+
+The above commands will generate new file that merges the files passed to the class in order. Also, and "@import" statement is processed inline and is also inserted in the order it is encountered recursively throughout the CSS. In this example the file has also been yui-compressed.
+
+== Dependencies
+
+Requires the yui-compressor gem:
+
+> gem install -r yui-compressor
+
+More info:
+http://github.com/sstephenson/ruby-yui-compressor
+
+== Specs
+
+A simple but comprehensive rSpec suite is provided for quality assurance purposes.
+
+> spec css_reader_spec.rb
+
+== Todo
+
+Convert this into a gem that can be run via command line?
+
+== Disclaimer
+
+This is really crude but useful. You could easily crash it if you placed an @import statement in a fashion to create an infinite loop. Don't do that! :)

@@ -1,0 +1,14 @@
+/* Basic Stuff
+   Updated: Thu 10.18.07 @ 5:15 p.m.
+   Author:     OK ok..
+   ----------------------------------------------------*/
+   #basic {
+      box-shadow: 3px 2px blur color/#000/rgba(0,0,0,.5);
+        -o-box-shadow: 3px 2px blur color/#000/rgba(0,0,0,.5);
+        -icab-box-shadow: 3px 2px blur color/#000/rgba(0,0,0,.5);
+        -khtml-box-shadow: 3px 2px blur color/#000/rgba(0,0,0,.5);
+        -moz-box-shadow: 3px 2px blur color/#000/rgba(0,0,0,.5);
+        -webkit-box-shadow: 3px 2px blur color/#000/rgba(0,0,0,.5);
+   }
+   
+   @import "more_stuff.css";
