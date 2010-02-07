@@ -1,4 +1,4 @@
-require 'css_reader'
+require File.expand_path(File.join(File.dirname(__FILE__),'..','lib','css-reader'))
 
 describe CSSReader do
   it "should be defined" do
@@ -7,7 +7,9 @@ describe CSSReader do
   
   describe "stylesheets" do
     before(:all) do
-      @css_reader = CSSReader.new("test.css")
+      @test_path = File.expand_path(File.join(File.dirname(__FILE__),'..','demo','test.css'))
+      @secondary_path = File.expand_path(File.join(File.dirname(__FILE__),'..','demo','secondary.css'))
+      @css_reader = CSSReader.new(@test_path)
     end
     
     it "should include test.css" do
@@ -35,12 +37,12 @@ describe CSSReader do
     end
     
     it "should include secondary.css if we append it" do
-      @css_reader.append("secondary.css")
+      @css_reader.append(@secondary_path)
       @css_reader.stylesheets.include?("secondary.css").should be(true)
     end
     
     it "should include secondary.css if we open multiple docs on initialize" do
-      @css_reader = CSSReader.new("test.css","secondary.css")
+      @css_reader = CSSReader.new(@test_path,@secondary_path)
       @css_reader.stylesheets.include?("secondary.css").should be(true)
     end
     
