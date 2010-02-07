@@ -1,11 +1,16 @@
 == Usage
 
 > require 'css_reader'
-> css = CSSReader.new("test.css")
-> css.append("secondary.css")
+> css = CSSReader.new("test.css","secondary.css")
 > css.save("production.css", :compress => true)
 
 The above commands will generate new file that merges the files passed to the class in order. Also, and "@import" statement is processed inline and is also inserted in the order it is encountered recursively throughout the CSS. In this example the file has also been yui-compressed.
+
+Alternatively, you can pass in additional css files at later point with the append method:
+
+> css = CSSReader.new("test.css")
+> # do stuff...
+> css.append("secondary.css")
 
 == Dependencies
 

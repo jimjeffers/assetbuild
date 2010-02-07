@@ -30,6 +30,20 @@ describe CSSReader do
       @css_reader.stylesheets.include?("more_stuff.css").should be(true)
     end
     
+    it "should not include secondary.css" do
+      @css_reader.stylesheets.include?("secondary.css").should be(false)
+    end
+    
+    it "should include secondary.css if we append it" do
+      @css_reader.append("secondary.css")
+      @css_reader.stylesheets.include?("secondary.css").should be(true)
+    end
+    
+    it "should include secondary.css if we open multiple docs on initialize" do
+      @css_reader = CSSReader.new("test.css","secondary.css")
+      @css_reader.stylesheets.include?("secondary.css").should be(true)
+    end
+    
     describe "normal" do
       before(:all) do
         @css_text = @css_reader.normal

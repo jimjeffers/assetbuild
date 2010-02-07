@@ -2,26 +2,25 @@ require "rubygems"
 require "yui/compressor"
 
 class CSSReader
-  def initialize(path=nil)
+  def initialize(*args)
     @@yui = YUI::CssCompressor.new
     @files = {}
     @processed_css = []
-    unless path.nil?
-      append(path)
-    end
+    append(*args)
   end
   
-  def append(path)
-    file = File.open(path)
-    unless @files.keys.include?(path)
-      process_imports( 
-        @files[path] = {
-          :name       => File.basename(path), 
-          :directory  => File.dirname(path), 
-          :contents   => file.readlines, 
-          :position   => @files.length 
-        } 
-      )
+  def append(*args)
+    unless args.nil? || args.length < 1
+      for path in args
+        file = File.open(path)
+        unless @files.keys.include?(path)
+          process_imports( @files[path] = {
+                            :name       => File.basename(path), 
+                            :directory  => File.dirname(path), 
+                            :contents   => file.readlines, 
+                            :position   => @files.length } )
+        end
+      end
     end
   end
   
