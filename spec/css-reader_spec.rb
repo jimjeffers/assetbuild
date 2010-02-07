@@ -96,8 +96,10 @@ describe CSSReader do
     
     describe "save" do
       before(:all) do
-        @css_reader.save((@normal = "normal.css"))
-        @css_reader.save((@compressed = "compressed.css"), :compress => true)
+        @normal = File.expand_path(File.join(File.dirname(__FILE__),'..','demo','normal.css'))
+        @compressed = File.expand_path(File.join(File.dirname(__FILE__),'..','demo','compressed.css'))
+        @css_reader.save(@normal)
+        @css_reader.save(@compressed, :compress => true)
       end
       
       it "should create a new file with the name 'normal.css'" do
