@@ -1,3 +1,4 @@
 demo/compressed.css
 demo/normal.css
 pkg/
+demo/*.build.*
