@@ -11,6 +11,11 @@ class CSSReader
   
   def append(*args)
     unless args.nil? || args.length < 1
+      puts args
+      if args.length == 1 
+        args = args[0] if args.class == Array
+        args = [args] if args.class == String
+      end
       for path in args
         file = File.open(path)
         unless @files.keys.include?(path)

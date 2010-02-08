@@ -8,7 +8,9 @@ Echoe.new('css-reader', '0.1.0') do |p|
   p.author         = "Jim Jeffers"
   p.email          = "shout@jimjeffers.com"
   p.ignore_pattern = ["tmp/*", "script/*"]
+  p.runtime_dependencies = ["yui-compressor"]
   p.development_dependencies = []
+  p.bin_files = ["bin/*"]
 end
 
 Dir["#{File.dirname(__FILE__)}/tasks/*.rake"].sort.each { |ext| load ext }
