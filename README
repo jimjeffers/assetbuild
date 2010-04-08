@@ -1,6 +1,8 @@
-== Usage
+Builds, bundles, and minifies CSS and CoffeeScript files.
 
-> require 'css_reader'
+== Building CSS
+
+> require 'css-reader'
 > css = CSSReader.new("test.css","secondary.css")
 > css.save("production.css", :compress => true)
 
@@ -11,6 +13,27 @@ Alternatively, you can pass in additional css files at later point with the appe
 > css = CSSReader.new("test.css")
 > # do stuff...
 > css.append("secondary.css")
+
+You could also run this from the command line:
+
+> buildcss public/stylesheets/main.css -c
+
+Which will recursively process all imported files and then write a single minified CSS file to:
+public/stylesheets/main.build.min.css
+
+== Building CoffeeScript
+
+> require 'coffee-bundler'
+> js = CoffeeBundler.new("path/to/coffee/bundle")
+> js.save("public/javascripts/bundle.min.js", :compress => true)
+
+This will effectively bundle files that match:
+path/to/coffee/bundle/*.coffee
+
+...into a single minified JS file located at:
+public/javascripts/bundle.min.js
+
+No, this will not work unless you have coffee-script installed on your system!
 
 == Dependencies
 
@@ -26,10 +49,6 @@ http://github.com/sstephenson/ruby-yui-compressor
 A simple but comprehensive rSpec suite is provided for quality assurance purposes.
 
 > spec css_reader_spec.rb
-
-== Todo
-
-Convert this into a gem that can be run via command line?
 
 == Disclaimer
 
