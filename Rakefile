@@ -1,16 +1,21 @@
 require 'rubygems'
 require 'rake'
-require 'echoe'
 
-Echoe.new('assetbuild', '0.1.0') do |p|
-  p.description    = "Easily merge and compress multiple asset files together (currently supports CSS and coffee-script)."
-  p.url            = "http://github.com/jimjeffers/CSS-Reader"
-  p.author         = "Jim Jeffers"
-  p.email          = "shout@jimjeffers.com"
-  p.ignore_pattern = ["tmp/*", "script/*"]
-  p.runtime_dependencies = ["yui-compressor"]
-  p.development_dependencies = []
-  p.bin_files = ["bin/*"]
+# Rakefile
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gemspec|
+    gemspec.name                      = "assetbuild"
+    gemspec.summary                   = "Easily merge and compress multiple asset files together (currently supports CSS and coffee-script)."
+    gemspec.homepage                  = "http://github.com/jimjeffers/assetbuild"
+    gemspec.authors                   = ["Jim Jeffers"]
+    gemspec.description               = "Easily merge and compress multiple asset files together (currently supports CSS and coffee-script)."
+    gemspec.email                     = "shout@jimjeffers.com"
+    gemspec.executables               = ["assetbuild", "buildcoffee", "buildcss"]
+  end
+  Jeweler::GemcutterTasks.new
+rescue LoadError
+  puts "Jeweler not available. Install it with: sudo gem install jeweler -s http://gemcutter.org"
 end
 
 Dir["#{File.dirname(__FILE__)}/tasks/*.rake"].sort.each { |ext| load ext }
