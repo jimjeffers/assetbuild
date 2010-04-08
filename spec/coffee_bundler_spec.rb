@@ -1,4 +1,4 @@
-require File.expand_path(File.join(File.dirname(__FILE__),'..','lib','coffee-bundler'))
+require File.expand_path(File.join(File.dirname(__FILE__),'..','lib','asset_build'))
 
 describe CoffeeBundler do
   it "should be defined" do

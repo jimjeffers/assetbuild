@@ -1,4 +1,4 @@
-require File.expand_path(File.join(File.dirname(__FILE__),'..','lib','css-reader'))
+require File.expand_path(File.join(File.dirname(__FILE__),'..','lib','asset_build'))
 
 describe CSSReader do
   it "should be defined" do

@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'rubygems' unless ENV['NO_RUBYGEMS']
+require File.expand_path(File.join(File.dirname(__FILE__),'..','lib','asset_build'))
+
+# Argument defaults
+options = {
+  :individual => false,
+  :compress => false
+}
+ 
+# Get arguments
+opts = OptionParser.new do |o|
+  o.banner = "usage: assetbuild path_to_yml"
+  o.separator ""
+  
+  # Version
+  o.on_tail("-v", "--version", "show version") do
+    #puts "assetbuild " + AssetBuild.version
+    exit
+  end
+end
+
+opts.parse! # Parse arguments into `options` hash
+
+# Get source from command line
+files = []
+ARGV.each do |arg|
+  if arg[0] == "-"
+    break 
+  else
+    # TODO: Find a cleaner way to do this. I know there has to be one.
+    builder = AssetBuild.new(File.expand_path(File.join(ENV["PWD"],arg)))
+    builder.process_files!
+  end
+end

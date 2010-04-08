@@ -2,7 +2,7 @@
 
 require 'optparse'
 require 'rubygems' unless ENV['NO_RUBYGEMS']
-require File.expand_path(File.join(File.dirname(__FILE__),'..','lib','coffee-bundler'))
+require File.expand_path(File.join(File.dirname(__FILE__),'..','lib','asset_build'))
 
 # Argument defaults
 options = {

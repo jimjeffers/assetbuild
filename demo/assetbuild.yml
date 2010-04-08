@@ -1,0 +1,15 @@
+main.js:
+   type: coffeescript
+   source: coffee_bundle
+   compress: true
+
+stand_alone.js:
+   type: coffeescript
+   source: stand_alone.coffee
+   desintation: coffee_bundle/
+   compress: true
+
+assets.css:
+   type: stylesheet
+   source: test.css
+   compress: true
