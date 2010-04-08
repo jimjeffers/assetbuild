@@ -35,6 +35,11 @@ class CoffeeBundler
     @@yui.compress(to_javascript)
   end
   
+  def save(name,options={})
+    compress = options[:compress] || false
+    File.open(name,'w') {|f| f.write compress ? compressed : to_javascript }
+  end
+  
   protected
   def compile(path)
     %x(coffee -p #{path})

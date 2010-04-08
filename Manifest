@@ -1,10 +1,15 @@
 Manifest
 README
 Rakefile
+assetbuild.gemspec
+bin/buildcoffee
 bin/buildcss
+demo/coffee_bundle/demo.coffee
+demo/coffee_bundle/demo2.coffee
 demo/compressed.css
 demo/normal.css
 demo/secondary.css
+demo/stand_alone.coffee
 demo/styles/reset.css
 demo/styles/special/basic_stuff.css
 demo/styles/special/more_stuff.css
@@ -12,5 +17,7 @@ demo/styles/typography.css
 demo/test.build.css
 demo/test.build.min.css
 demo/test.css
+lib/coffee-bundler.rb
 lib/css-reader.rb
+spec/coffee-bundler_spec.rb
 spec/css-reader_spec.rb

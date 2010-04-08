@@ -2,8 +2,8 @@ require 'rubygems'
 require 'rake'
 require 'echoe'
 
-Echoe.new('css-reader', '0.1.0') do |p|
-  p.description    = "Easily merge and compress multiple CSS files together."
+Echoe.new('assetbuild', '0.1.0') do |p|
+  p.description    = "Easily merge and compress multiple asset files together (currently supports CSS and coffee-script)."
   p.url            = "http://github.com/jimjeffers/CSS-Reader"
   p.author         = "Jim Jeffers"
   p.email          = "shout@jimjeffers.com"

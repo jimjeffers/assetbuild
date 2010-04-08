@@ -1,0 +1,53 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'rubygems' unless ENV['NO_RUBYGEMS']
+require File.expand_path(File.join(File.dirname(__FILE__),'..','lib','coffee-bundler'))
+
+# Argument defaults
+options = {
+  :individual => false,
+  :compress => false
+}
+ 
+# Get arguments
+opts = OptionParser.new do |o|
+  o.banner = "usage: buildcoffee source [destination] [--compress]"
+  o.separator ""
+
+  # Use YUI compression?
+  o.on("-c", "--compress", "compress javascript with yui-compressor") do
+    options[:compress] = true
+  end
+  
+  # Version
+  o.on_tail("-v", "--version", "show version") do
+    #puts "coffeebundler " + CoffeeBundler.version
+    exit
+  end
+end
+
+opts.parse! # Parse arguments into `options` hash
+
+# Get source from command line
+files = []
+ARGV.each do |arg|
+  if arg[0] == "-"
+    break 
+  else
+    tags = (options[:compress]) ? 'build.min' : 'build'
+    if File.directory?(arg)
+      destination = [arg]+tags+["js"].join(".")
+    else
+      filename = File.basename(arg)
+      destination = filename.split(".").insert(-2,tags).join('.')
+    end
+    # TODO: Find a cleaner way to do this. I know there has to be one.
+    files << [  File.expand_path(File.join(ENV["PWD"],arg)),
+                File.expand_path(File.join(ENV["PWD"],File.dirname(arg),destination))]
+  end
+end
+
+unless options[:individual] || files.length < 1
+  CoffeeBundler.new(files.map { |m| m[0] }).save(files.first[1],:compress => options[:compress])
+end
